@@ -204,8 +204,8 @@ nav h1 a {
 }
 .inside #footer {
   bottom: 0;
-  position: absolute;
-  width: 50%;
+  position: inherit;
+  width: 100%;
 }
 #restaurant-name {
   color: #f18200;
@@ -239,11 +239,11 @@ nav h1 a {
 #restaurant-container, #reviews-container {
   border-bottom: 1px solid #d9d9d9;
   border-top: 1px solid #fff;
-  padding: 140px 40px 30px;
+  padding: 2.5%;
   width: 50%;
 }
 #reviews-container {
-  padding: 30px 40px 80px;
+  padding: 2.5%;
 }
 #reviews-container h2 {
   color: #f58500;
