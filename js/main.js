@@ -1,3 +1,5 @@
+// TODO add responsive image functionality
+
 let restaurants,
   neighborhoods,
   cuisines
