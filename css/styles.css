@@ -274,8 +274,16 @@ nav h1 a {
   color: #666;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (min-width: 750px) {
   #restaurants-list {
+    display: grid;
+    grid: auto-flow / 1fr 1fr;
+  }
+}
 
+@media only screen and (min-width: 1000px) {
+  #restaurants-list {
+    display: grid;
+    grid: auto-flow / 1fr 1fr 1fr;
   }
 }
