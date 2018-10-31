@@ -148,7 +148,7 @@ resetRestaurants = (restaurants) => {
  */
 fillRestaurantsHTML = (restaurants = self.restaurants) => {
   const ul = document.getElementById('restaurants-list');
-  let tabIndexValue = 4; // starting tab index value
+  let tabIndexValue = 30; // starting tab index value
   restaurants.forEach(restaurant => {
     ul.append(createRestaurantHTML(restaurant, tabIndexValue));
     tabIndexValue++;
