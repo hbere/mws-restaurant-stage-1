@@ -40,6 +40,7 @@ h1, h2, h3, h4, h5, h6 {
 
 article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
   display: block;
+  box-sizing: border-box;
 }
 
 #maincontent {
@@ -64,6 +65,7 @@ nav {
   height: 80px;
   background-color: #252831;
   text-align: center;
+  padding-top: 10px;
 }
 
 nav h1 {
@@ -86,6 +88,7 @@ nav h1 a {
   font-size: 17px;
   margin: 0;
   width: 100%;
+  box-sizing: border-box;
 }
 
 /* Display list items side by side */
@@ -222,10 +225,9 @@ nav h1 a {
 
 .inside #map-container {
   background: blue none repeat scroll 0 0;
-  height: 60%;
+  height: 400px;
   right: 0;
   top: 20%;
-  width: 50%;
 }
 
 .inside #map {
@@ -275,7 +277,6 @@ nav h1 a {
   border-bottom: 1px solid #d9d9d9;
   border-top: 1px solid #fff;
   padding: 2.5%;
-  width: 50%;
 }
 
 #reviews-container {
@@ -317,6 +318,15 @@ nav h1 a {
   #restaurants-list {
     display: grid;
     grid: auto-flow / 1fr 1fr;
+  }
+  .inside #map-container {
+    width: 50%;
+    position: fixed;
+    box-sizing: border-box;
+    height: 65%;
+  }
+  #restaurant-container, #reviews-container {
+    width: 50%;
   }
 }
 
