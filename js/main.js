@@ -148,8 +148,10 @@ resetRestaurants = (restaurants) => {
  */
 fillRestaurantsHTML = (restaurants = self.restaurants) => {
   const ul = document.getElementById('restaurants-list');
+  let tabIndexValue = 4; // starting tab index value
   restaurants.forEach(restaurant => {
-    ul.append(createRestaurantHTML(restaurant));
+    ul.append(createRestaurantHTML(restaurant, tabIndexValue));
+    tabIndexValue++;
   });
   addMarkersToMap();
 }
@@ -157,12 +159,13 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
 /**
  * Create restaurant HTML.
  */
-createRestaurantHTML = (restaurant) => {
+createRestaurantHTML = (restaurant, tabIndexValue) => {
   const li = document.createElement('li');
 
   const image = document.createElement('img');
   image.className = 'restaurant-img';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  image.alt = `${restaurant.name}`;
   li.append(image);
 
   const name = document.createElement('h1');
@@ -177,9 +180,12 @@ createRestaurantHTML = (restaurant) => {
   address.innerHTML = restaurant.address;
   li.append(address);
 
-  const more = document.createElement('a');
+  const more = document.createElement('button');
   more.innerHTML = 'View Details';
-  more.href = DBHelper.urlForRestaurant(restaurant);
+  more.setAttribute('onclick', `window.location.href='${DBHelper.urlForRestaurant(restaurant)}';`);
+  more.setAttribute('title', `View details for ${restaurant.name}, ${restaurant.neighborhood}, ${restaurant.address}`);
+  // more.href = DBHelper.urlForRestaurant(restaurant);
+  more.setAttribute('tabindex', tabIndexValue);
   li.append(more)
 
   return li
