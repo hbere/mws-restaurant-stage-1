@@ -1,16 +1,21 @@
 
 // TODO adjust service worker scope and move this file to js folder
 
-// Service Worker to cache files already visited
+// NOTES
 // Remember service worker default scope = its location
-self.addEventListener('install', event => {
+// Helpful note from MDN at https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers
+// "A real service worker implementation would use caching and onfetch rather than the deprecated XMLHttpRequest API. Those features are not used here so that you can focus on understanding Promises."
 
+let STATIC_CACHE = 'restaurant-static-v1';
+
+// Start caching
+// Event fires when service worker installed for the first time
+self.addEventListener('install', event => {
     // Confirm the event happened
     console.log('Service worker was installed: ', event);
-
     // Cache all local requests
     event.waitUntil(
-        caches.open('restaurant-static-v1').then(function (cache) {
+        caches.open(STATIC_CACHE).then(function (cache) {
             return cache.addAll([
                 '/',
                 '/img/2.jpg',
@@ -19,6 +24,25 @@ self.addEventListener('install', event => {
                 '/js/restaurant_info.js',
                 '/data/restaurants.json'
             ]);
+        })
+    );
+});
+
+// Delete old cache (after new one is in use)
+// Event fires when service worker activated & ready for use
+self.addEventListener('activate', function(event) {
+    // event.waitUntil(
+    //     caches.delete('restaurant-static-v0')
+    // );
+    event.waitUntil(
+        caches.keys().then(function(cacheNames) {
+            return Promise.all(
+                cacheNames.filter(function(cacheName) {
+                    return cacheName.startsWith('restaurant-static') && cacheName != STATIC_CACHE;
+                }).map(function(cacheName) {
+                    return cache.delete(cacheName);
+                })
+            );
         })
     );
 });
@@ -79,8 +103,3 @@ self.addEventListener('fetch', event => {
     // }
 
 });
-
-
-
-// Helpful note from MDN at https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers
-// "A real service worker implementation would use caching and onfetch rather than the deprecated XMLHttpRequest API. Those features are not used here so that you can focus on understanding Promises."
