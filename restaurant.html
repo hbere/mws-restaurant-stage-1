@@ -68,9 +68,11 @@
   <script type="text/javascript" src="js/restaurant_info.js"></script>
   <!-- Service worker -->
   <script type="application/javascript" charset="utf-8">
+    // CREDIT for starter code, 31 October 2018:
+    // https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
-        navigator.serviceWorker.register('/sw.js', {scope: '/'}).then(function (reg) {
+        navigator.serviceWorker.register('/sw.js', { scope: '/' }).then(function (reg) {
           console.log('Service worker registration successful with scope: ', reg.scope);
         }).catch(function (err) {
           console.log('Oh no! Service worker registration not successful. Error: ', err);

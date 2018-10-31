@@ -1,4 +1,9 @@
 
+// CREDIT for the starter code used to develop this file:
+// Udacity Front-End Engineering Nanodegree course on Service Workers
+// 31 October 2018
+// https://classroom.udacity.com/nanodegrees/nd001/parts/b29af831-fa50-4fe9-b30d-ad48476664d1/modules/83c4bddc-b362-4e71-8fa1-91f30ba57ab0/lessons/6381510081/concepts/63885494660923
+
 // TODO adjust service worker scope and move this file to js folder
 
 // NOTES
