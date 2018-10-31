@@ -69,7 +69,13 @@
   <!-- Service worker -->
   <script type="application/javascript" charset="utf-8">
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js');
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('sw.js').then(function (reg) {
+          console.log('Service worker registration successful');
+        }).catch(function (err) {
+          console.log('Oh no! Service worker registration not successful.')
+        });
+      });
     }
   </script>
   <!-- Google Maps -->
