@@ -12,7 +12,7 @@
 // "A real service worker implementation would use caching and onfetch rather than the deprecated XMLHttpRequest API. Those features are not used here so that you can focus on understanding Promises."
 
 let STATIC_CACHE = 'restaurant-static-v1';
-let HOME_URL = 'http://localhost:8000/'
+let HOME_URL = 'http://localhost:8000/';
 
 // Start caching
 // Event fires when service worker installed for the first time
