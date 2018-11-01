@@ -1,5 +1,3 @@
-// TODO add responsive image functionality
-
 let restaurants,
   neighborhoods,
   cuisines
@@ -148,10 +146,8 @@ resetRestaurants = (restaurants) => {
  */
 fillRestaurantsHTML = (restaurants = self.restaurants) => {
   const ul = document.getElementById('restaurants-list');
-  let tabIndexValue = 30; // starting tab index value
   restaurants.forEach(restaurant => {
-    ul.append(createRestaurantHTML(restaurant, tabIndexValue));
-    tabIndexValue++;
+    ul.append(createRestaurantHTML(restaurant, 0));
   });
   addMarkersToMap();
 }
