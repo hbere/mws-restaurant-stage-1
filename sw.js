@@ -63,10 +63,10 @@ self.addEventListener('fetch', event => {
     console.log('Fetch event occurred: ', event.request.url);
 
     // Load from cache if already available, otherwise save to cache
-    // TODO figure out how to handle better pages like http://localhost:8000/restaurant.html?id=2
-        // if loaded without caching first
     event.respondWith(
-        caches.match(event.request).then(function (response) {
+        caches.match(event.request, { ignoreSearch: true }).then(function (response) {
+            // Note the option to ignore the search!
+            // more info @ https://developer.mozilla.org/en-US/docs/Web/API/Cache/match
             if (response) {
                 // Return the item if it is already there
                 // console.log('2', event.request.url);
