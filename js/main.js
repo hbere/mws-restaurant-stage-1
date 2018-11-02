@@ -1,3 +1,5 @@
+// TODO consider LazyLoad https://www.andreaverlicchi.eu/lazyload/
+
 let restaurants,
   neighborhoods,
   cuisines
